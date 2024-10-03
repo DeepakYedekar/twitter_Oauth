@@ -16,11 +16,11 @@ app.use(twitter_routes);
 app.get('/home', (req, res) => {
   res.status(200).send('hello from server');
 })
-app.use(
-  cors({
-    origin: "https://localhost:3000",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://localhost:3000",
+//   })
+// );
 
 const port = process.env.PORT || 4000
 app.listen(port, () => {
