@@ -15,7 +15,7 @@ import {
 const authClient = new auth.OAuth2User({
   client_id: process.env.CLIENT_ID,
   client_secret: process.env.CLIENT_SECRET,
-  callback: "http://localhost:5000/callback",
+  callback: "https://twitter-oauth-uqu6.onrender.com/callback",
   scopes: ["tweet.read", "users.read"],
 });
 
