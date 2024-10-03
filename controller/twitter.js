@@ -45,19 +45,21 @@ export const callback = async (req, res) => {
 
       let accessToken = generateAccessToken(userResponse?.data?.data);
       let refereshToken = generateRefreshToken(userResponse?.data?.data);
-      let data = { accessToken, refereshToken, name,referral_points:user.referral_points };
+      let data = { accessToken, refereshToken, name};
 
       if (user != null) {
         data.referal_code = user.referral_code;
+        data.referral_points=user.referral_points; 
       } else {
         let referal_code = name.split(" ")[0] + "_" + id.substr(0, 6);
-        await User.create({
+        let user=await User.create({
           twitter_id: id,
           name: name,
           referral_code: referal_code,
           refresh_token: refereshToken
         });
         data.referal_code = referal_code;
+        data.referral_points = user.referral_points; 
       }
 
       // Send a message to the parent window and close the popup
